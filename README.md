@@ -1,24 +1,8 @@
-# README
+# NORTH STAR
+## A client and project managment app to keep you headed in the right direction.
+Client Management without the Bogus Bells and Whistles.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+More info to come.
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3.0
