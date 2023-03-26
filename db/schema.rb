@@ -10,7 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_24_010858) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_012322) do
+  create_table "action_items", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "phase_id", null: false
+    t.integer "user_id", null: false
+    t.string "category"
+    t.date "start_date"
+    t.date "due_date"
+    t.date "completed_date"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["phase_id"], name: "index_action_items_on_phase_id"
+    t.index ["user_id"], name: "index_action_items_on_user_id"
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "string"
+    t.string "email"
+    t.string "phone"
+    t.integer "access"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "phases", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "project_id", null: false
+    t.string "start_date"
+    t.string "date"
+    t.date "due_date"
+    t.date "completed_date"
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_phases_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.boolean "completed"
+    t.date "start_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "description", limit: 200
     t.boolean "completed"
@@ -18,4 +68,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_010858) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "email"
+    t.string "phone"
+    t.integer "access"
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_users_on_project_id"
+  end
+
+  add_foreign_key "action_items", "phases"
+  add_foreign_key "action_items", "users"
+  add_foreign_key "phases", "projects"
+  add_foreign_key "users", "projects"
 end
