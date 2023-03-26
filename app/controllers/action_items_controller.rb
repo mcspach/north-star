@@ -7,6 +7,10 @@ class ActionItemsController < ApplicationController
     @action_item = ActionItem.find(params[:id])
   end
 
+    def new
+    @action_item = ActionItem.new
+  end
+
   def create
     @action_item = ActionItem.new(action_item_params)
     if @action_item.save

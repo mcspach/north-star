@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user = Users.find(params[:id])
   end
 
+  def new
+    @user = User.new
+  end
+
   def create
     @user = Users.new(user_params)
     if @user.save

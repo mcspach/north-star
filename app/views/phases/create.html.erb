@@ -1,4 +1,36 @@
 <div>
-  <h1 class="font-bold text-4xl">Phases#create</h1>
-  <p>Find me in app/views/phases/create.html.erb</p>
+<h1>Create Phase</h1>
+
+<%= form_with(model: @phase, local: true) do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :start_date %>
+    <%= f.text_field :start_date %>
+  </div>
+  <div>
+    <%= f.label :date %>
+    <%= f.text_field :date %>
+  </div>
+  <div>
+    <%= f.label :due_date %>
+    <%= f.date_field :due_date %>
+  </div>
+  <div>
+    <%= f.label :completed_date %>
+    <%= f.date_field :completed_date %>
+  </div>
+  <div>
+    <%= f.label :completed %>
+    <%= f.check_box :completed %>
+  </div>
+  <%= f.hidden_field :project_id, value: @project.id %>
+  <%= f.submit "Create Phase" %>
+<% end %>
 </div>
