@@ -5,10 +5,7 @@ Rails.application.routes.draw do
     post :toggle, on: :member
   end
 
-  resources :admins
-
   resources :projects do
-    resources :users
     resources :phases do
       resources :action_items
     end
