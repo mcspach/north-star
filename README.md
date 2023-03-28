@@ -1,6 +1,6 @@
 # NORTH STAR
 ## A client and project managment app to keep you headed in the right direction.
-Client Management without the Bogus Bells and Whistles.
+Client management without the bogus bells and whistles.
 
 More info to come.
 
