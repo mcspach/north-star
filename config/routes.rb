@@ -6,16 +6,17 @@ Rails.application.routes.draw do
     # passwords: 'users/passwords',
     # omniauth: 'users/omniauth',
     # configurations: 'users/configurations'
-    }
-root 'phases#index'
+  }
 
-resources :tasks do
-  post :toggle, on: :member
-end
+  root 'projects#index'
 
-resources :projects do
-  resources :phases do
-    resources :action_items
+  resources :projects do
+    resources :phases do
+      resources :action_items
+    end
   end
 end
-end
+
+# resources :tasks do
+#   post :toggle, on: :member
+# end

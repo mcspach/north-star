@@ -1,7 +1,7 @@
 <div>
-<h1>Create Phase</h1>
+<%# <h1>Create Phase</h1> %>
 
-<%= form_with(model: [@project, @phase], local: true) do |f| %>
+<%= form_with(model: [@project, @phase], data: { turbo_frame: "new_phase_form" }, local: true) do |f| %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>

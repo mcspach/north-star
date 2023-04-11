@@ -1,0 +1,21 @@
+<%= form_with(model: project, class: "") do |f| %>
+  <div class="mb-5">
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title, placeholder: @project.title, class: "" %>
+    </div>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div>
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+    </div>
+    <div>
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date %>
+    </div>
+    <%= f.submit "Save Changes", class: "btn btn-primary" %>
+  </div>
+<% end %>
