@@ -1,0 +1,10 @@
+<div>
+  <h2>Editing Task</h2>
+
+  <turbo-frame id="<%= dom_id @project %>">
+    <div id="<%= dom_id @project %>">
+      <%= render "form", project: @project %>
+      <%= link_to "Dismiss Changes", projects_path, class: "btn btn-warning" %>
+    </div>
+  </turbo-frame>
+</div>

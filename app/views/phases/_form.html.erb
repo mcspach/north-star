@@ -1,0 +1,28 @@
+<div>
+<%# <h1>Create Phase</h1> %>
+
+<%= form_with(model: [@project, @phase], data: { turbo_frame: "new_phase_form" }, local: true) do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :due_date %>
+    <%= f.date_field :due_date %>
+  </div>
+  <div>
+    <%= f.label :completed_date %>
+    <%= f.date_field :completed_date %>
+  </div>
+  <div>
+    <%= f.label :completed %>
+    <%= f.check_box :completed %>
+  </div>
+  <%= f.hidden_field :project_id, value: @project.id %>
+  <%= f.submit "Create Phase" %>
+<% end %>
+</div>

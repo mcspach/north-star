@@ -1,0 +1,14 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import './variables.scss';
+@import './dashboard.scss';
+
+* {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+}
+
+turbo-frame {
+  border: 1px solid blue;
+}

@@ -1,7 +1,9 @@
-<h1>Phases</h1>
+<% if user_signed_in? %>        
+  <h1>Phases</h1>
+  <ul>
+    <% @phases.each do |phase| %>
+      <li><%= phase.title %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<ul>
-  <% @phases.each do |phase| %>
-    <li><%= phase.name %></li>
-  <% end %>
-</ul>

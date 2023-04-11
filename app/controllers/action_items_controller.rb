@@ -20,6 +20,10 @@ class ActionItemsController < ApplicationController
     end
   end
 
+  def edit
+    @action_item = ActionItem.find(params[:id])
+  end
+
   def update
     @action_item = ActionItem.find(params[:id])
     if @action_item.update(action_item_params)

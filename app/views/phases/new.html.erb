@@ -1,7 +1,7 @@
 <div>
 <h1>Create Phase</h1>
 
-<%= form_with(model: @phase, local: true) do |f| %>
+<%= form_with(model: [@project, @phase], local: true) do |f| %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -9,14 +9,6 @@
   <div>
     <%= f.label :description %>
     <%= f.text_area :description %>
-  </div>
-  <div>
-    <%= f.label :start_date %>
-    <%= f.text_field :start_date %>
-  </div>
-  <div>
-    <%= f.label :date %>
-    <%= f.text_field :date %>
   </div>
   <div>
     <%= f.label :due_date %>

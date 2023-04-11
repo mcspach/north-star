@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
-  root 'phases#index'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+    # unlocks: 'users/unlocks',
+    # registrations: 'users/registrations',
+    # passwords: 'users/passwords',
+    # omniauth: 'users/omniauth',
+    # configurations: 'users/configurations'
+  }
 
-  resources :tasks do
-    post :toggle, on: :member
-  end
-
-  resources :admins
+  root 'projects#index'
 
   resources :projects do
-    resources :users
     resources :phases do
       resources :action_items
     end
   end
 end
+
+# resources :tasks do
+#   post :toggle, on: :member
+# end

@@ -5,6 +5,11 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @phase = @project.phases.new
+  end
+
+  def phases
+    @phases = Phases.where(project: current_project)
   end
 
   def new
@@ -18,6 +23,10 @@ class ProjectsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @project = Project.find(params[:id])
   end
 
   def update
