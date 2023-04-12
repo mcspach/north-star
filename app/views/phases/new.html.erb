@@ -23,6 +23,6 @@
     <%= f.check_box :completed %>
   </div>
   <%= f.hidden_field :project_id, value: @project.id %>
-  <%= f.submit "Create Phase" %>
+  <%= f.submit "Create Phase", class: "btn btn-primary" %>
 <% end %>
 </div>

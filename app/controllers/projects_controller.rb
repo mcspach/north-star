@@ -1,6 +1,13 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @projects = Project.all
+    @user = current_user
+    if @user.admin?
+      @projects = Project.all
+    else
+      @projects = @user.projects
+    end
   end
 
   def show

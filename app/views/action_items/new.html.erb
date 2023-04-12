@@ -1,4 +1,44 @@
 <div>
-  <h1 class="font-bold text-4xl">ActionItems#create</h1>
-  <p>Find me in app/views/action_items/create.html.erb</p>
+  <h1 class="font-bold text-4xl">New Action Item</h1>
+  <p class="text-gray-500">Create a new action item for Phase: <%= @phase.title %>.</p>
+  <hr/>
+
+  <%= form_with(model: [@project, @phase, @action_item], local: true) do |f| %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div>
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date %>
+    </div>
+    <div>
+      <%= f.label :due_date %>
+      <%= f.date_field :due_date %>
+    </div>
+    <div>
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+    </div>
+    <div>
+      <%= f.label :completed_date %>
+      <%= f.date_field :completed_date %> 
+    </div>
+    <div>
+      <%= f.label :user_id %>
+      <%= f.collection_select :user_id, @project.users.all, :id, :name, include_blank: 'None' %> 
+    </div>
+    <div>
+      <%= f.label :content %>
+      <%= f.text_area :content %>   
+    </div>
+    <%= f.hidden_field :phase_id, value: @phase.id %>
+    <%= f.submit "Create", class: "btn btn-primary" %>
+  <% end %>
+
 </div>
+<%= link_to "Nevermind", project_path(@project), class: "btn btn-warning" %>

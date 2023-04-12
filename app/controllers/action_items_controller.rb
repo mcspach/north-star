@@ -1,5 +1,11 @@
 class ActionItemsController < ApplicationController
+  before_action :authenticate_user!
+
+  before_action :get_project
+  before_action :get_phase
+
   def index
+    @user = current_user
     @action_items = ActionItem.all
   end
 
@@ -7,14 +13,14 @@ class ActionItemsController < ApplicationController
     @action_item = ActionItem.find(params[:id])
   end
 
-    def new
-    @action_item = ActionItem.new
+  def new
+    @action_item = @phase.action_items.build
   end
 
   def create
-    @action_item = ActionItem.new(action_item_params)
+    @action_item = @phase.action_items.build(action_item_params)
     if @action_item.save
-      redirect_to @action_item
+      redirect_to project_phase_path(@project, @phase)
     else
       render 'new'
     end
@@ -27,16 +33,16 @@ class ActionItemsController < ApplicationController
   def update
     @action_item = ActionItem.find(params[:id])
     if @action_item.update(action_item_params)
-      redirect_to @action_item
+      redirect_to project_phase_path(@project, @phase)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @action_item = .find(params[:id])
+    @action_item = ActionItem.find(params[:id])
     @action_item.destroy
-    redirect_to action_items_path
+    redirect_to project_path(@project)
   end
 
   private
@@ -44,4 +50,13 @@ class ActionItemsController < ApplicationController
   def action_item_params
     params.require(:action_item).permit(:title, :description)
   end
+
+  def get_project
+    @project = Project.find(params[:project_id])
+  end
+
+  def get_phase
+    @phase = Phase.find(params[:phase_id])
+  end
+
 end

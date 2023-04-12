@@ -1,7 +1,9 @@
-@import 'bootstrap/scss/bootstrap';
+// inside app/assets/stylesheets/application.bootstrap.scss  
+@import 'bootstrap/scss/bootstrap'; 
 @import 'bootstrap-icons/font/bootstrap-icons';
-@import './variables.scss';
-@import './dashboard.scss';
+
+@import 'variables.scss';
+@import 'globals.scss';
 
 * {
   font-family: proxima-nova, sans-serif;
@@ -11,4 +13,8 @@
 
 turbo-frame {
   border: 1px solid blue;
+}
+
+form {
+  max-width: 600px;
 }

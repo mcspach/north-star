@@ -11,8 +11,16 @@
     Check. This is complete.
   <% end %>
   </p>
-  
 
+  <div>
+    <h2>Action Items:</h2>
+    <%# create a turbo frame that has editing and create new capabilities %>
+    <turbo-frame id="action_items">
+      <%= render partial: "action_items/index", locals: { action_items: @action_items } %>
+    </turbo-frame>
+  <div>
+  
+  <hr/>
   <%= link_to "Edit Phase Details", edit_project_phase_path(@project, @phase) %> | 
   <%= link_to "Back to " + @project.title, project_path(@project) %> 
 </div>

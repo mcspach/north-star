@@ -1,4 +1,5 @@
 class PhasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_project
   before_action :set_phase, only: [:show, :edit, :update, :destroy]
 
@@ -8,23 +9,26 @@ class PhasesController < ApplicationController
 
   def show
     # @phase = @project.phases.find(params[:id])
-    @action_item = @phase.action_items.new
+    # @action_item = @phase.action_items.new
+    @action_items = @phase.action_items
+  end
+
+  def action_items
+    @action_items = @phase.action_items
+    render 'action_items/index'
   end
 
   def new
-    # @phase = @project.phases.new
     @phase = @project.phases.build
   end
 
   def create
     @phase = @project.phases.build(phase_params)
-    # @comment = @post.comments.build(comment_params)
     if @phase.save
       redirect_to project_path(@project)
     else
       render 'new'
     end
-    
   end
 
   def edit

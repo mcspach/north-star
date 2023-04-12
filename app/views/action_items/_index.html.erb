@@ -1,0 +1,17 @@
+<div>
+  <p>[Find me in app/views/action_items/_index.html.erb]</p>
+  <%# create an unrodered list of @action_itmes, with the ability to edit and delete and then a button to add a new action item %>
+  <ul>
+    <% @action_items.each do |action_item| %>
+      <li>
+        <strong><%= action_item.title %></strong>
+        <p><%= action_item.description %></p>
+
+        <%= link_to "Edit Item", edit_project_phase_action_item_path(@project, @phase, action_item) %> |
+        <%= link_to "Delete Item", project_phase_action_item_path(@project, @phase, action_item), method: :delete, data: { confirm: "Are you sure you want to delete this item permanently?" } %>
+      </li>
+    <% end %>
+  </ul> 
+  <%# link for create new action_item %>
+  <%= link_to "+ New Action Item", new_project_phase_action_item_path(@project, @phase), class: "btn btn-primary" %>
+</div>
