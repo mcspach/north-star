@@ -1,13 +1,13 @@
 class PhasesController < ApplicationController
   before_action :get_project
-  before_action :set_phase, only: [:show, :update, ]
+  before_action :set_phase, only: [:show, :edit, :update, :destroy]
 
   def index
     @phases = @project.phases
   end
 
   def show
-    @phase = Phase.find(params[:id])
+    # @phase = @project.phases.find(params[:id])
     @action_item = @phase.action_items.new
   end
 
@@ -58,6 +58,6 @@ class PhasesController < ApplicationController
   end
 
   def set_phase
-    @phase = Phase.find(params[:id])
+    @phase = @project.phases.find(params[:id])
   end
 end

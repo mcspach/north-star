@@ -1,4 +1,3 @@
-require 'phonelib'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -10,11 +9,11 @@ class User < ApplicationRecord
   has_many :action_items, through: :phases
 
   
-  validates :phone, phone: true
+  validates_format_of :phone, with: /\A[0-9]{10,13}\z/, message: "Must be 10 to 13 digits"
   validates_format_of :email, with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i, message: "Must be a valid email address"
   validates :name, presence: true  
-  validates enum access_level: { 1: 'read_only', 2: 'general', 3: 'admin', 4: 'super admin' }
-  validates enum user_type: { admin: 'admin', user: 'user' }, presence: true
+  validates :access_level, presence: true, inclusion: { in: ['read_only', 'general', 'admin', 'super admin'] }
+  validates :user_type, presence: true, inclusion: { in: ['admin', 'user'] }
 
   def isAdmin?
     user_type == 'admin'
