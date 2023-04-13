@@ -74,10 +74,4 @@ group :test do
   gem "webdrivers"
 end
 
-# bootstrap + jquery
-gem "bootstrap"
-gem "jquery-rails"
-
-gem "cssbundling-rails", "~> 1.1"
-
-gem "jsbundling-rails", "~> 1.1"
+gem "tailwindcss-rails", "~> 2.0"

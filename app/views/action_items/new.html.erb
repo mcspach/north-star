@@ -1,4 +1,48 @@
-<div>
-  <h1 class="font-bold text-4xl">ActionItems#create</h1>
-  <p>Find me in app/views/action_items/create.html.erb</p>
+<div class="bg-white rounded-md shadow-md p-4">
+  <h1 class="text-2xl font-bold mb-4">New Action Item</h1>
+  <p class="text-gray-500 mb-4">Create a new action item for Phase: <%= @phase.title %>.</p>
+  <hr class="my-4"/>
+
+  <%= form_with(model: [@project, @phase, @action_item], local: true) do |f| %>
+    <div class="mb-4">
+      <%= f.label :title, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.text_field :title, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :description, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.text_area :description, class: "form-textarea mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :start_date, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.date_field :start_date, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :due_date, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.date_field :due_date, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :completed, class: "block font-medium text-sm text-gray-700" %>
+      <label for="completed" class="flex items-center">
+        <%= f.check_box :completed, class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+        <span class="ml-2 font-medium text-sm text-gray-700">Completed</span>
+      </label>
+    </div>
+    <div class="mb-4">
+      <%= f.label :completed_date, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.date_field :completed_date, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %> 
+    </div>
+    <div class="mb-4">
+      <%= f.label :user_id, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.collection_select :user_id, @project.users.all, :id, :name, include_blank: 'None', class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+    <div>
+      <%= f.label :content, class: "block font-medium text-sm text-gray-700"%>
+      <%= f.text_area :content, class: "form-textarea mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>   
+    </div>
+    <%= f.hidden_field :phase_id, value: @phase.id %>
+    <%= f.submit "Create", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block" %>
+  <% end %>
+  <div class="mt-8">
+    <%= link_to "Nevermind", project_path(@project), class: "bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-block" %>
+  </div>
 </div>

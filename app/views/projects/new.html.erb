@@ -1,23 +1,24 @@
-<div>
-<h1>Create Project</h1>
-
-<%= form_for @project do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <div>
-    <%= f.label :completed %>
-    <%= f.check_box :completed %>
-  </div>
-  <div>
-    <%= f.label :start_date %>
-    <%= f.date_field :start_date %>
-  </div>
-  <%= f.submit "Create Project" %>
-<% end %>
+<div class="bg-white rounded-md shadow-md p-4">
+  <h1 class="text-3xl font-bold mb-4">Create Project</h1>
+  <%= form_for @project do |f| %>
+    <div class="mb-4">
+      <%= f.label :title, class: "block font-bold mb-2" %>
+      <%= f.text_field :title, class: "block w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:border-blue-500" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :description, class: "block font-bold mb-2" %>
+      <%= f.text_area :description, class: "block w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:border-blue-500" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :completed, class: "inline-flex items-center" do %>
+        <%= f.check_box :completed, class: "form-checkbox h-5 w-5 text-blue-600" %>
+        <span class="ml-2 text-gray-700 font-bold">Completed</span>
+      <% end %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :start_date, class: "block font-bold mb-2" %>
+      <%= f.date_field :start_date, class: "block w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:border-blue-500" %>
+    </div>
+    <%= f.submit "Create Project", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block" %>
+  <% end %>
 </div>

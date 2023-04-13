@@ -1,18 +1,27 @@
-<div>
-  <h1>Phase</h1>
+<div class="bg-white rounded-lg shadow-md p-6">
+  <h1 class="text-2xl font-bold mb-4">Phase</h1>
 
-  <p><strong>Name:</strong> <%= @phase.title %></p>
-  <p><strong>Description:</strong> <%= @phase.description %></p>
-  <p><strong>Due Date:</strong> <%= @phase.due_date %></p>
-  <p><strong>Completed:</strong> 
-  <% if @phase.completed  === false %>
-    Not yet completed.
-  <% else %>
-    Check. This is complete.
-  <% end %>
+  <p class="mb-2"><strong>Name:</strong> <%= @phase.title %></p>
+  <p class="mb-2"><strong>Description:</strong> <%= @phase.description %></p>
+  <p class="mb-2"><strong>Due Date:</strong> <%= @phase.due_date %></p>
+  <p class="mb-4"><strong>Completed:</strong> 
+    <% if @phase.completed === false %>
+      Not yet completed.
+    <% else %>
+      Check. This is complete.
+    <% end %>
   </p>
   
-
-  <%= link_to "Edit Phase Details", edit_project_phase_path(@project, @phase) %> | 
-  <%= link_to "Back to " + @project.title, project_path(@project) %> 
+  <div>
+    <h2 class="text-lg font-medium mb-2">Action Items:</h2>
+    <%# <turbo-frame id="action_items"> %>
+      <%= render partial: "action_items/index", locals: { action_items: @action_items } %>
+    <%# </turbo-frame> %>
+  </div>
+  
+  <hr class="my-6"/>
+  <div class="flex justify-between">
+    <%= link_to "Edit Phase Details", edit_project_phase_path(@project, @phase), class: "text-blue-500 hover:underline" %> 
+    <%= link_to "Back to " + @project.title, project_path(@project), class: "text-blue-500 hover:underline" %> 
+  </div>
 </div>

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :projects
   has_many :phases, through: :projects
-  has_many :action_items, through: :phases
+  has_many :action_items
 
   
   validates_format_of :phone, with: /\A[0-9]{10,13}\z/, message: "Must be 10 to 13 digits"
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :access_level, presence: true, inclusion: { in: ['read_only', 'general', 'admin', 'super admin'] }
   validates :user_type, presence: true, inclusion: { in: ['admin', 'user'] }
 
-  def isAdmin?
+  def admin?
     user_type == 'admin'
   end
 
