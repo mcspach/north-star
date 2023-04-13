@@ -1,7 +1,5 @@
 // inside app/assets/stylesheets/application.bootstrap.scss  
-@import 'bootstrap/scss/bootstrap'; 
-@import 'bootstrap-icons/font/bootstrap-icons';
-
+@import 'application.tailwind.css';
 @import 'variables.scss';
 @import 'globals.scss';
 
@@ -9,6 +7,10 @@
   font-family: proxima-nova, sans-serif;
   font-style: normal;
   font-weight: 100;
+}
+
+body {
+  background-color: rgb(238, 240, 242);
 }
 
 turbo-frame {

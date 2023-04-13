@@ -1,21 +1,28 @@
+<div class="bg-white rounded-md shadow-md p-4">
+  <h1 class="text-3xl font-bold mb-4">Editing Project</h1>
 <%= form_with(model: project, class: "") do |f| %>
-  <div class="mb-5">
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title, placeholder: @project.title, class: "" %>
+    <div class="mb-4">
+      <%= f.label :title, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.text_field :title, placeholder: @project.title, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
     </div>
-    <div>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+
+    <div class="mb-4">
+      <%= f.label :description, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.text_area :description, class: "form-textarea mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
     </div>
-    <div>
-      <%= f.label :completed %>
-      <%= f.check_box :completed %>
+
+    <div  class="mb-4">
+      <%= f.label :start_date, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.date_field :start_date, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
     </div>
-    <div>
-      <%= f.label :start_date %>
-      <%= f.date_field :start_date %>
+
+    <div class="mb-4">
+      <label for="completed" class="flex items-center">
+        <%= f.check_box :completed, class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+        <span class="ml-2 font-medium text-sm text-gray-700">Completed</span>
+      </label>
     </div>
-    <%= f.submit "Save Changes", class: "btn btn-primary" %>
-  </div>
+
+    <%= f.submit "Save Changes", class: "mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
 <% end %>
+</div>

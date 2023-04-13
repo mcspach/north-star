@@ -1,28 +1,38 @@
-<div>
-<h1>Create Phase</h1>
+<div class="bg-white rounded-md shadow-md p-4">
+  <h1 class="text-xl font-bold mb-4">Create Phase</h1>
 
-<%= form_with(model: [@project, @phase], local: true) do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <div>
-    <%= f.label :due_date %>
-    <%= f.date_field :due_date %>
-  </div>
-  <div>
-    <%= f.label :completed_date %>
-    <%= f.date_field :completed_date %>
-  </div>
-  <div>
-    <%= f.label :completed %>
-    <%= f.check_box :completed %>
-  </div>
-  <%= f.hidden_field :project_id, value: @project.id %>
-  <%= f.submit "Create Phase", class: "btn btn-primary" %>
-<% end %>
+  <%= form_with(model: [@project, @phase], local: true) do |f| %>
+    <div class="mb-4">
+      <%= f.label :title, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.text_field :title, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :description, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.text_area :description, class: "form-textarea mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :due_date, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.date_field :due_date, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :completed_date, class: "block font-medium text-sm text-gray-700" %>
+      <%= f.date_field :completed_date, class: "form-input mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    </div>
+
+    <div class="mb-4">
+      <label for="completed" class="flex items-center">
+        <%= f.check_box :completed, class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+        <span class="ml-2 font-medium text-sm text-gray-700">Completed</span>
+      </label>
+    </div>
+
+    <%= f.hidden_field :project_id, value: @project.id %>
+
+    <div>
+      <%= f.submit "Create Phase", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block" %>
+    </div>
+  <% end %>
 </div>
